@@ -60,6 +60,10 @@ arrays = [np.asarray(all_files), np.asarray(all_subfolders)]
 idx = pd.MultiIndex.from_arrays(arrays, names=('article_name', 'folder_name'))
 df = pd.DataFrame(all_words, index=idx) #creating dataframe with multiindex
 df = df.fillna(0) 
+
+##### TRANSFORM MULTI-INDEX INTO COLUMNS #####
+# df = df.reset_index(level='folder_name').reset_index()
+
 df_sum = df.sum()  #global wordcount 
 
 # delete columns where words occur less than n times in df

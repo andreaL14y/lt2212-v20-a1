@@ -48,8 +48,9 @@ def part1_load(folder1, folder2, n=1):
         words = get_words(article)
         word_counts=get_word_counts(words)
         all_words.append(word_counts)
-        all_subfolders.append(article.split('\\')[1])
-        all_files1.append(article.split('\\')[2].split('.')[0])
+        A = list(reversed(article.split('\\')))
+        all_subfolders.append(A[1])
+        all_files1.append(A[0].split('.')[0])
 
     arrays = [np.asarray(all_files1), np.asarray(all_subfolders)]
     idx = pd.MultiIndex.from_arrays(arrays, names=('article', 'folder')) # multiindex category 'folder' could be converted to a regular column: df = df.reset_index(level='folder')
